@@ -39,15 +39,11 @@ const getNotes = () =>
       return alert('Error: ' + response.statusText)
 
     }
-
     return response.json()
 })
-.then((data) => data)
-// .then(notesArr => {
-// console.log("not executing" + notesArr)
-// alert("Testing note functionality")
-// return notesArr
-//})
+.then((data) => {
+  return data
+});
 
 
 const saveNote = (note) =>
@@ -58,16 +54,15 @@ const saveNote = (note) =>
     },
     body: JSON.stringify(note),
   })
-  .then(response => {
-    if(response.ok) {
-      return response.json()
+  .then(res => {
+    if (res.ok) {
+      return res.json()
     }
-    alert("error: " + response.statusText)
+    alert("Error: " + res.statusText)
   })
-  .then(postResponse => {
-    console.log(postResponse)
-    alert('Note has been saved!')
-});
+.catch(error => console.log(error))
+
+
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
@@ -75,7 +70,9 @@ const deleteNote = (id) =>
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  })
+  .catch(error => console.log(error))
+
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -198,7 +195,7 @@ const renderNoteList = async (notes) => {
 };
 
 // Gets notes from the db and renders them to the sidebar
-const getAndRenderNotes = () => getNotes().then(renderNoteList);
+const getAndRenderNotes = () => getNotes().then(renderNoteList)
 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);

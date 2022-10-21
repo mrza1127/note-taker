@@ -20,9 +20,6 @@ app.use(express.static('public'))
 app.use('/', htmlRoutes)
 app.use('/api', apiRoutes)
 
-// app.get('/api', (req, res) => {
-//     res.json(notes)
-// })
 
 app.listen(PORT, () => {
     console.log(`API server now on ${PORT}!`)
