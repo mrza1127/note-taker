@@ -1,3 +1,5 @@
+const { post } = require("../../../routes/htmlRoutes");
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -26,7 +28,12 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('/api/notes')
+  fetch('/api/notes', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
   .then(response => {
     if (!response.ok) {
       return alert('Error: ' + response.statusText)
@@ -35,6 +42,7 @@ const getNotes = () =>
 
     return response.json()
 })
+.then((data) => data)
 // .then(notesArr => {
 // console.log("not executing" + notesArr)
 // alert("Testing note functionality")
@@ -49,7 +57,17 @@ const saveNote = (note) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(note),
-  });
+  })
+  .then(response => {
+    if(response.ok) {
+      return response.json()
+    }
+    alert("error: " + response.statusText)
+  })
+  .then(postResponse => {
+    console.log(postResponse)
+    alert('Note has been saved!')
+});
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
