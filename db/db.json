@@ -1,6 +1,12 @@
-[
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    }
-]
+{
+    "notes": [
+        {
+            "title": "Test title",
+            "text": "Test text"
+        },
+        {
+            "title": "Sample note",
+            "text": "cbd is a scam"
+        }
+    ]
+}

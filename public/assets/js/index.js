@@ -31,6 +31,17 @@ const getNotes = () =>
     headers: {
       'Content-Type': 'application/json',
     },
+  })
+  .then(response => {
+    if (!response.ok) {
+      return alert('Error: ' + response.statusText)
+
+    }
+    return response.json()
+    .then(notes => {
+      console.log(notes)
+      alert("Testing a response for note")
+    })
   });
 
 const saveNote = (note) =>
