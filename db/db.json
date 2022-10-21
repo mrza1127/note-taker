@@ -1,19 +1,12 @@
 [
     {
         "title": "Test title",
-        "text": "Test text"
+        "text": "Test text",
+        "id": "1"
     },
     {
         "title": "Sample note",
-        "text": "CBD IS A SCA<M"
-    },
-    {
-    
-        "title": "Another sample note",
-        "text": "Sample sample sample"
-    },
-    {
-        "title": "CBD",
-        "text" : "is a SCAMMMMM"
+        "text": "cbd is fake",
+        "id": "2"
     }
 ]
